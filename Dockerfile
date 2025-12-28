@@ -12,11 +12,20 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-ARG BIN_PATH=linux/AxeSim_V1.0.bin
-COPY ${BIN_PATH} /app/axesim.bin
-RUN chmod +x /app/axesim.bin && chown -R 1000:1000 /app
+ARG AXESIM_TAG
+ARG TARGETARCH
+COPY linux/ /app/linux/
+RUN set -euo pipefail; \
+    case "${TARGETARCH:-amd64}" in \
+      arm64) src="/app/linux/AxeSim_V${AXESIM_TAG}_arm64.bin" ;; \
+      amd64) src="/app/linux/AxeSim_V${AXESIM_TAG}.bin" ;; \
+      *) echo "Unsupported TARGETARCH=${TARGETARCH}" >&2; exit 1 ;; \
+    esac; \
+    test -f "$src"; \
+    cp "$src" /app/axesim.bin; \
+    chmod +x /app/axesim.bin; \
+    chown -R 1000:1000 /app
 
 EXPOSE 8081
 USER 1000:1000
 CMD ["/app/axesim.bin"]
-

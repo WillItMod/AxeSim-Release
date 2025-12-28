@@ -27,27 +27,26 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Resolve binary path
+      - name: Resolve binary paths
         id: bin
         shell: bash
         run: |
           set -euo pipefail
           tag="${GITHUB_REF_NAME#v}"
-          bin="linux/AxeSim_V${tag}.bin"
-          echo "bin=$bin" >> "$GITHUB_OUTPUT"
-          ls -la linux | head -n 50
-          test -f "$bin"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          ls -la linux | head -n 200
+          test -f "linux/AxeSim_V${tag}.bin"
+          test -f "linux/AxeSim_V${tag}_arm64.bin"
 
-      - name: Build and push (amd64)
+      - name: Build and push (multi-arch)
         uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           build-args: |
-            BIN_PATH=${{ steps.bin.outputs.bin }}
+            AXESIM_TAG=${{ steps.bin.outputs.tag }}
           tags: |
             ghcr.io/willitmod/axesim-release:${{ github.ref_name }}
             ghcr.io/willitmod/axesim-release:latest
-
