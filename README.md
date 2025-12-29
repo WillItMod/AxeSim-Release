@@ -16,5 +16,5 @@ Direct downloads (latest):
 The GHCR image runs the compiled `AxeSim` linux binary.
 
 - UI port: `8081`
-- Optional per-miner ports: `8801-8810` (Bitaxe-style `/api/system/*`, one port per virtual miner)
+- Optional per-miner ports: `8091-8100` (Bitaxe-style `/api/system/*`, one port per virtual miner)
 - Data dir: `/data` (mounted)
