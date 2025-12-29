@@ -2,7 +2,7 @@ manifestVersion: 1
 id: willitmod-axesim
 category: bitcoin
 name: AxeSim
-version: "1.0.6"
+version: "1.0.7"
 tagline: Virtual miner simulator
 icon: icon.svg
 description: >-
@@ -21,6 +21,6 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Add per-miner published ports (configurable base port) with Bitaxe-style `/api/system/*` for external tools and AxeBench/AxeLive detection.
+  Fix: published miner ports no longer auto-create 10 miners in the UI; additional miners are created on-demand when their port is accessed. Add: extra compatibility fields (`model`, `model_name`) to improve AxeLive discovery.
 submitter: WillItMod
 submission: ""

@@ -7,9 +7,9 @@ This repo contains release binaries and container packaging.
 ## Downloads
 
 Direct downloads (latest):
-- Windows: https://github.com/WillItMod/AxeSim-Release/raw/main/windows/AxeSim_v1.0.6.exe
-- Linux (amd64): https://github.com/WillItMod/AxeSim-Release/raw/main/linux/AxeSim_V1.0.6.bin
-- Linux (arm64): https://github.com/WillItMod/AxeSim-Release/raw/main/linux/AxeSim_V1.0.6_arm64.bin
+- Windows: https://github.com/WillItMod/AxeSim-Release/raw/main/windows/AxeSim_v1.0.7.exe
+- Linux (amd64): https://github.com/WillItMod/AxeSim-Release/raw/main/linux/AxeSim_V1.0.7.bin
+- Linux (arm64): https://github.com/WillItMod/AxeSim-Release/raw/main/linux/AxeSim_V1.0.7_arm64.bin
 
 ## Docker (LAN / Umbrel)
 
