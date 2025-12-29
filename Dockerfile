@@ -27,5 +27,6 @@ RUN set -euo pipefail; \
     chown -R 1000:1000 /app
 
 EXPOSE 8081
+EXPOSE 8801-8810
 USER 1000:1000
 CMD ["/app/axesim.bin"]
